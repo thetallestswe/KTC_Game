@@ -1,12 +1,11 @@
 from flask import Flask
+from app.models import db
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///game_ranking_site.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-@app.route("/")
-def home():
-    return "Welcome to the Game Ranking Site!"
+db.init_app(app)
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
-#testing 
+with app.app_context():
+    db.create_all()
