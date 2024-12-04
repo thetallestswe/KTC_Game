@@ -65,3 +65,18 @@ def add_vote():
 from flask import abort
 if 'title' not in data or not data['title']:
     abort(400, description="Title is required.")
+    
+@routes.route('/games', methods=['GET'])
+def list_games():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    pagination = Game.query.paginate(page, per_page, False)
+    games = pagination.items
+    return jsonify([{
+        "id": game.id,
+        "title": game.title,
+        "platform": game.platform,
+        "genre": game.genre,
+        "release_date": str(game.release_date)
+    } for game in games])
+
