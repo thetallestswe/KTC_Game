@@ -10,3 +10,4 @@ def test_add_game(client):
         "release_date": "2024-01-01"
     })
     assert response.status_code == 201
+# testing quick build 
