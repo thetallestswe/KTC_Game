@@ -65,7 +65,7 @@ def add_vote():
 from flask import abort
 if 'title' not in data or not data['title']:
     abort(400, description="Title is required.")
-    
+#pagination added    
 @routes.route('/games', methods=['GET'])
 def list_games():
     page = request.args.get('page', 1, type=int)
