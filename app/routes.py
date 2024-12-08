@@ -22,7 +22,7 @@ def add_game():
     # Convert release_date to a Python date object
     release_date = datetime.strptime(data['release_date'], '%Y-%m-%d').date()
 
-    # Create a new Game instance
+    # Create a new Game entry for the DB
     new_game = Game(
         title=data['title'],
         platform=data['platform'],
