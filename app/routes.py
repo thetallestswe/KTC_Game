@@ -19,7 +19,7 @@ def list_games():
 def add_game():
     data = request.json
 
-    # Convert release_date to a Python date object
+    # Convert release_date to a Python date object + more
     release_date = datetime.strptime(data['release_date'], '%Y-%m-%d').date()
 
     # Create a new Game entry for the DB
